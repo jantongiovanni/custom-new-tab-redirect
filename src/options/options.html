@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta
+            content="width=device-width, initial-scale=1"
+            name="viewport"
+        >
+        <meta
+            content="light dark"
+            name="color-scheme"
+        >
+        <title>Light/Dark New Tab Redirect</title>
+    </head>
+    <body>
+        <main>
+          <h2>Dark New Tab Redirect</h2>
+          <form>
+            <label for="url">URL:</label>
+            <input
+              id="url"
+              name="url"
+              required
+            >
+            <button type="button" id="save">Save</button>
+            <button type="button" id="reset">x</button>
+            <div id="status"></div>
+
+            <!-- file-scheme-warning -->
+            <p id="file-scheme-warning" style="display: none;">
+              <strong>Important:</strong>
+              If you are using a file URL, you need to enable the
+              <code>Allow access to file URLs</code> option in the
+              extension settings. Current setting: false
+            </p>
+            <!-- allowaccess.png -->
+            <p>
+              <img
+                alt="Allow access to file URLs"
+                src="/src/images/allowaccess.png"
+              >
+
+            <button type="button" id="open-settings">Open Extension Settings</button>
+          </form>
+        </main>
+        <script src="options.js"></script>
+    </body>
+</html>

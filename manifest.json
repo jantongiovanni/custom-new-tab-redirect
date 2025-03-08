@@ -1,10 +1,22 @@
 {
-  "name": "Hello Extensions",
-  "description": "Base Level Extension",
+  "name": "Dark New Tab Redirect",
+  "description": "",
   "version": "1.0",
   "manifest_version": 3,
   "action": {
-    "default_popup": "/src/popup/hello.html",
     "default_icon": "/src/images/icon.png"
+  },
+  "permissions": [
+    "storage"
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["*"],
+      "matches": ["file:///*"]
+    }
+  ],
+  "options_page": "/src/options/options.html",
+  "chrome_url_overrides": {
+    "newtab": "/src/redirect/redirect.html"
   }
 }
