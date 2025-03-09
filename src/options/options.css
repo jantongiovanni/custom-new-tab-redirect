@@ -1,0 +1,16 @@
+body {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 3rem;
+  align-items: flex-start;
+}
+
+.url-input {
+  width: 20rem;
+}
+
+.allow-access-img {
+  width: 686px;
+  height: 49px;
+}

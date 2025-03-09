@@ -35,8 +35,11 @@ document.getElementById('reset').addEventListener('click', function() {
   }, 1500);
 });
 
-document.getElementById('open-settings').addEventListener('click', function() {
+document.getElementById('open-extension-settings').addEventListener('click', function() {
   console.log('open-settings');
-  //opens extension settings chrome://extensions/?id=fnmljlendckijopajedcjebppcmolngf
-  chrome.tabs.update({ url: 'chrome://extensions/?id=fnmljlendckijopajedcjebppcmolngf' });
+  chrome.tabs.create({ url: 'chrome://extensions/?id=fnmljlendckijopajedcjebppcmolngf' });
+});
+
+document.getElementById('open-appearance-settings').addEventListener('click', function() {
+  chrome.tabs.create({ url: 'chrome://settings/appearance' });
 });
