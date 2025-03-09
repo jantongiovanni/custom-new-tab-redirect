@@ -15,19 +15,36 @@
         <link rel="stylesheet" href="options.css">
     </head>
     <body>
-      <h2>Dark New Tab Redirect</h2>
-      <form>
+      <h1>Dark New Tab Redirect</h1>
+      <form class="url-form">
+        <!-- title flash color -->
+        <label for="title">Flash Color</label>
+        <!-- Default shows user color-scheme preference  -->
+         <p>Default: <span class="dark-scheme">Dark</span><span class="light-scheme">Light</span></p>
+
+        <!-- color picker -->
+        <label for="color">Custom Background Color:</label>
+        <input id="toggle" name="toggle" type="checkbox">
+        <input id="color" name="color" class="color-input" type="color">
+        <button type="button" id="reset-color" title="Clear Color">✕</button>
+
+        <!-- url input -->
         <label for="url">URL:</label>
         <input id="url" name="url" class="url-input" required>
-        <button type="button" id="save">Save</button>
-        <button type="button" id="reset">x</button>
-        <div id="status"></div>
+        <button type="button" id="reset-url" title="Clear URL">✕</button>
+
+
+        <button type="button" id="save" title="Save">Save</button>
+        <div id="status" class="status"></div>
+
+
+
       </form>
-      <p id="file-scheme-warning" style="display: none;">
+      <p id="file-scheme-warning" style="display: block;">
         <strong>Important:</strong>
         If you are using a file URL, you need to enable the
         <code>Allow access to file URLs</code> option in the
-        extension settings. Current setting: false
+        extension settings.
       </p>
       
       <img alt="Allow access to file URLs"

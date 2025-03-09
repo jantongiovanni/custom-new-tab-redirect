@@ -1,3 +1,13 @@
+document.addEventListener('DOMContentLoaded', function() {
+  //get color from storage
+  chrome.storage.sync.get({ color: '' }, items => {
+    //set the background color of the body
+    if (items.color && items.color !== '') {
+      document.body.style.backgroundColor = items.color;
+    }
+  });
+});
+
 chrome.storage.sync.get(
   { url: '' },
   items => {
@@ -10,7 +20,7 @@ chrome.storage.sync.get(
 
     //if not a local file, redirect to the URL
     if (!items.url.startsWith('file://')) {
-      window.location.href = items.url;
+      chrome.tabs.update({ url: items.url });
       return;
     }
 
