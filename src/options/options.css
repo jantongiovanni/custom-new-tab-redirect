@@ -6,31 +6,15 @@ body {
   align-items: flex-start;
 }
 
-.dark-scheme {
-  /* prefers color scheme, display block */
-  display: none;
-  @media (prefers-color-scheme: dark) {
-    display: block;
-  }
-}
-
-.light-scheme {
-  /* prefers color scheme, display block */
-  display: none;
-  @media (prefers-color-scheme: light) {
-    display: block;
-  }
-
-}
-
 .url-form {
   display: flex;
+  flex-direction: column;
   gap: 0.2rem;
-  align-items: center;
+  align-items: flex-start;
 
-  /* input {
-    margin-left: 0.2rem;
-  } */
+  label {
+    font-weight: bold;
+  }
 }
 
 .status {

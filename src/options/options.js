@@ -2,16 +2,20 @@ console.log('options.ts');
 
 //set the default value of the url and color inputs
 chrome.storage.sync.get({ url: '', color: '' }, items => {
-  document.getElementById('url').value = items.url;
-  document.getElementById('color').value = items.color || '#000000';
-});
+  const urlElement = document.getElementById('url');
+  const schemeElement = document.getElementById('scheme');
+  const colorElement = document.getElementById('color');
 
-// chrome.extension.isAllowedFileSchemeAccess(isAllowedAccess => {
-//   if (!isAllowedAccess) {
-//     console.log('File scheme access is not allowed.');
-//     document.getElementById('file-scheme-warning').style.display = 'block';
-//   }
-// });
+  if (urlElement) {
+    urlElement.value = items?.url || '';
+  }
+  if (schemeElement) {
+    schemeElement.value = items?.scheme || 'dark';
+  }
+  if (colorElement) {
+    colorElement.value = items?.color || '#000000';
+  }
+});
 
 
 document.getElementById("save").addEventListener("click", function() {
@@ -28,17 +32,6 @@ document.getElementById("save").addEventListener("click", function() {
   }, 2000);
 });
 
-//reset button to clear color input
-document.getElementById('reset-color').addEventListener('click', function() {
-  console.log('reset');
-  document.getElementById('color').value = '#000000';
-  chrome.storage.sync.remove('color');
-  const status = document.getElementById('status');
-  status.textContent = 'Color reset.';
-  setTimeout(() => {
-    status.textContent = '';
-  }, 2000);
-});
 
 //reset button to clear url input
 document.getElementById('reset-url').addEventListener('click', function() {

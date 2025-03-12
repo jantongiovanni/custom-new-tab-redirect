@@ -16,22 +16,58 @@
     </head>
     <body>
       <h1>Dark New Tab Redirect</h1>
-      <form class="url-form">
-        <!-- title flash color -->
-        <label for="title">Flash Color</label>
-        <!-- Default shows user color-scheme preference  -->
-         <p>Default: <span class="dark-scheme">Dark</span><span class="light-scheme">Light</span></p>
+      <form class="url-form"> 
+        <div>
+          <label for="url">URL:</label>
+          <input id="url" name="url" class="url-input" required>
+          <button type="button" id="reset-url" title="Clear URL">✕</button>
+        </div>
 
-        <!-- color picker -->
-        <label for="color">Custom Background Color:</label>
-        <input id="toggle" name="toggle" type="checkbox">
-        <input id="color" name="color" class="color-input" type="color">
-        <button type="button" id="reset-color" title="Clear Color">✕</button>
+        <div class="radio-group">
+          <label for="scheme">Scheme:</label>
+          <div>
+            <input
+              id="scheme-dark"
+              name="scheme"
+              type="radio"
+              value="dark"
+            >
+            <label for="scheme-dark">Dark</label>
+          </div>
+          <div>
+            <input
+              id="scheme-light"
+              name="scheme"
+              type="radio"
+              value="light"
+            >
+            <label for="scheme-light">Light</label>
+          </div>
+          <div>
+            <input
+              id="scheme-custom"
+              name="scheme"
+              type="radio"
+              value="custom"
+            >
+            <label for="scheme-custom">Custom</label>
+        </div>
 
-        <!-- url input -->
-        <label for="url">URL:</label>
-        <input id="url" name="url" class="url-input" required>
-        <button type="button" id="reset-url" title="Clear URL">✕</button>
+
+        <!-- <div>
+          <label for="title">Flash Color</label>
+          <p>Default: <span class="dark-scheme">Dark</span><span class="light-scheme">Light</span></p>
+  
+        </div>
+        <div>
+          <label for="color">Custom Background Color:</label>
+          <input id="toggle" name="toggle" type="checkbox">
+        </div>
+
+        <div>
+          <input id="color" name="color" class="color-input" type="color">
+          <button type="button" id="reset-color" title="Clear Color">✕</button>
+        </div> -->
 
 
         <button type="button" id="save" title="Save">Save</button>
