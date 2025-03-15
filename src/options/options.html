@@ -19,62 +19,33 @@
       <form class="url-form"> 
         <div>
           <label for="url">URL:</label>
-          <input id="url" name="url" class="url-input" required>
+          <input id="url" name="url" class="url-input" placeholder="https://example.com">
           <button type="button" id="reset-url" title="Clear URL">✕</button>
         </div>
 
         <div class="radio-group">
-          <label for="scheme">Scheme:</label>
+          <label for="mode">Mode:</label>
           <div>
-            <input
-              id="scheme-dark"
-              name="scheme"
-              type="radio"
-              value="dark"
-            >
-            <label for="scheme-dark">Dark</label>
+            <input id="mode-dark" name="mode" type="radio" value="dark">
+            <label for="mode-dark">Dark</label>
           </div>
           <div>
-            <input
-              id="scheme-light"
-              name="scheme"
-              type="radio"
-              value="light"
-            >
-            <label for="scheme-light">Light</label>
+            <input id="mode-light" name="mode" type="radio" value="light">
+            <label for="mode-light">Light</label>
           </div>
           <div>
-            <input
-              id="scheme-custom"
-              name="scheme"
-              type="radio"
-              value="custom"
-            >
-            <label for="scheme-custom">Custom</label>
+            <input id="mode-custom" name="mode" type="radio" value="custom">
+            <label for="mode-custom">Custom</label>
+          </div>
         </div>
 
-
-        <!-- <div>
-          <label for="title">Flash Color</label>
-          <p>Default: <span class="dark-scheme">Dark</span><span class="light-scheme">Light</span></p>
-  
+        <div id="color-picker" style="display: none;">
+          <label for="color">Color:</label>
+          <input id="color" name="color" type="color" value="#121212">
         </div>
-        <div>
-          <label for="color">Custom Background Color:</label>
-          <input id="toggle" name="toggle" type="checkbox">
-        </div>
-
-        <div>
-          <input id="color" name="color" class="color-input" type="color">
-          <button type="button" id="reset-color" title="Clear Color">✕</button>
-        </div> -->
-
 
         <button type="button" id="save" title="Save">Save</button>
         <div id="status" class="status"></div>
-
-
-
       </form>
       <p id="file-scheme-warning" style="display: block;">
         <strong>Important:</strong>
