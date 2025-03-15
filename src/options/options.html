@@ -10,64 +10,86 @@
           content="light dark"
           name="color-scheme"
         >
-        <title>Light/Dark New Tab Redirect</title>
+        <title>Custom New Tab Redirect</title>
         <link rel="stylesheet" href="/src/assets/stylesheets/_reset.css">
         <link rel="stylesheet" href="options.css">
     </head>
     <body>
-      <h1>Dark New Tab Redirect</h1>
-      <form class="url-form"> 
-        <div>
-          <label for="url">URL:</label>
-          <input id="url" name="url" class="url-input" placeholder="https://example.com">
-          <button type="button" id="reset-url" title="Clear URL">✕</button>
+      <div class="border-wrapper dashed-border">
+        <div class="container-wrapper dashed-border header-container">
+          <h1>Custom New Tab Redirect</h1>
+          <p class="header-description">
+            Set a custom URL for the new tab page and choose the way chrome shows the tab before the page fully loads.
+          </p>
         </div>
-
-        <div class="radio-group">
-          <label for="mode">Mode:</label>
-          <div>
-            <input id="mode-dark" name="mode" type="radio" value="dark">
-            <label for="mode-dark">Dark</label>
-          </div>
-          <div>
-            <input id="mode-light" name="mode" type="radio" value="light">
-            <label for="mode-light">Light</label>
-          </div>
-          <div>
-            <input id="mode-custom" name="mode" type="radio" value="custom">
-            <label for="mode-custom">Custom</label>
-          </div>
+      </div>
+     
+      <div class="border-wrapper dashed-border expand-container">
+        <div class="container-wrapper dashed-border settings-container">
+          <form class="url-form"> 
+            <div>
+              <label for="url">URL:</label>
+              <input id="url" name="url" class="url-input" placeholder="https://example.com">
+              <button type="button" id="reset-url" title="Clear URL">✕</button>
+            </div>
+    
+            <div class="radio-group">
+              <label for="mode">Mode:</label>
+              <div>
+                <input id="mode-dark" name="mode" type="radio" value="dark">
+                <label for="mode-dark">Dark</label>
+              </div>
+              <div>
+                <input id="mode-light" name="mode" type="radio" value="light">
+                <label for="mode-light">Light</label>
+              </div>
+              <div>
+                <input id="mode-custom" name="mode" type="radio" value="custom">
+                <label for="mode-custom">Custom</label>
+              </div>
+            </div>
+    
+            <div id="color-picker" style="display: none;">
+              <label for="color">Color:</label>
+              <input id="color" name="color" type="color" value="#121212">
+            </div>
+    
+            <button type="button" id="save" title="Save">Save</button>
+            <div id="status" class="status"></div>
+          </form>
+          <p id="file-scheme-warning" style="display: block;">
+            <strong>Important:</strong>
+            If you are using a file URL, you need to enable the
+            <code>Allow access to file URLs</code> option in the
+            extension settings.
+          </p>
+          
+          <img alt="Allow access to file URLs"
+            class="allow-access-img"
+            src="/src/assets/allowaccess.png"
+          >
+    
+          <button type="button" id="open-extension-settings">
+            Open Extension Settings
+          </button>
+    
+    
+          <button type="button" id="open-appearance-settings">
+            Open Appearance Settings
+          </button>
         </div>
+      </div>
+      <div class="border-wrapper dashed-border">
+        <footer class="container-wrapper dashed-border footer">
+          <p>
+            Built by
+            <a class="underline-link" href="https://github.com/jantongiovanni" target="_blank">
+              Joe A
+            </a>
+          </p>
 
-        <div id="color-picker" style="display: none;">
-          <label for="color">Color:</label>
-          <input id="color" name="color" type="color" value="#121212">
-        </div>
-
-        <button type="button" id="save" title="Save">Save</button>
-        <div id="status" class="status"></div>
-      </form>
-      <p id="file-scheme-warning" style="display: block;">
-        <strong>Important:</strong>
-        If you are using a file URL, you need to enable the
-        <code>Allow access to file URLs</code> option in the
-        extension settings.
-      </p>
-      
-      <img alt="Allow access to file URLs"
-        class="allow-access-img"
-        src="/src/assets/allowaccess.png"
-      >
-
-      <button type="button" id="open-extension-settings">
-        Open Extension Settings
-      </button>
-
-
-      <button type="button" id="open-appearance-settings">
-        Open Appearance Settings
-      </button>
-      
+        </footer>
+      </div>
       <script src="options.js"></script>
     </body>
 </html>
