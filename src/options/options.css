@@ -3,11 +3,18 @@ body {
   flex-direction: column;
   align-items: flex-start;
   height: 100vh;
+  background-color: hsl(240 10% 3.9%);
 }
 
 h1 {
   line-height: 1.1;
   font-size: 2.25rem;
+  font-weight: 700;
+}
+
+h2 {
+  line-height: 1.1;
+  font-size: 1.5rem;
   font-weight: 700;
 }
 
@@ -48,14 +55,11 @@ h1 {
   border-right-width: 0px;
 }
 
-.header-container {
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-}
 
-.expand-container {
-  flex: 1 1 auto;
+@media (min-width: 1800px) {
+  .container-wrapper {
+      max-width: 1536px;
+  }
 }
 
 @media (min-width: 1400px) {
@@ -65,15 +69,63 @@ h1 {
   }
 }
 
+
+.header-container {
+  gap: 0.25rem;
+}
+
+.expand-container {
+  flex: 1 1 auto;
+}
+
+.options-container {
+  padding: 1.5rem;
+}
+
+.rounded-container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  align-items: flex-start;
+  border-width: 1px;
+  border-radius: 0.5rem;
+  border-color: hsl(240 3.7% 15.9%);
+  border-style: solid;
+  padding: 2.5rem;
+}
+
+.options-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  border-bottom: 1px solid hsl(240 3.7% 15.9%);
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
 .url-form {
   display: flex;
   flex-direction: column;
-  gap: 0.2rem;
+  gap: 1rem;
   align-items: flex-start;
+}
 
-  label {
-    font-weight: bold;
-  }
+label {
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.label-input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: flex-start;
+}
+
+.radio-selection-container {
+  cursor: pointer !important;
 }
 
 .status {
@@ -91,6 +143,8 @@ h1 {
 
 .footer {
   display: flex;
+  flex-direction: row;
+  gap: 0.25rem;
   padding: 1rem 1.5rem;
   font-size: .875rem;
 }

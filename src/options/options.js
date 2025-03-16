@@ -31,6 +31,16 @@ chrome.storage.sync.get({ url: '', mode: 'dark', color: '' }, items => {
   }
 });
 
+document.querySelectorAll('.label-input-container.radio-group > div').forEach(div => {
+  div.addEventListener('click', function() {
+    const radio = this.querySelector('input[type="radio"]');
+    if (radio) {
+      radio.checked = true;
+      radio.dispatchEvent(new Event('change'));
+    }
+  });
+});
+
 document.querySelectorAll('input[name="mode"]').forEach(element => {
   element.addEventListener('change', function() {
     const colorPicker = document.getElementById('color-picker');
@@ -38,15 +48,7 @@ document.querySelectorAll('input[name="mode"]').forEach(element => {
       case 'custom':
       colorPicker.style.display = 'block';
       break;
-      case 'light':
-      colorPicker.style.display = 'none';
-      document.getElementById('color').value = '#FFFFFF';
-      break;
-      case 'dark':
-      colorPicker.style.display = 'none';
-      document.getElementById('color').value = '#121212';
-      break;
-      default:
+    default:
       colorPicker.style.display = 'none';
     }
   });
@@ -60,6 +62,7 @@ document.getElementById("save").addEventListener("click", function() {
   const url = document.getElementById('url')?.value || '';
   chrome.storage.sync.set({ url });
   const mode = document.querySelector('input[name="mode"]:checked')?.value;
+  console.log(mode);
   mode && chrome.storage.sync.set({ mode });
   const status = document.getElementById('status');
   status.textContent = '✅ Settings saved.';
