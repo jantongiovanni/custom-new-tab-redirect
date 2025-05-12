@@ -1,6 +1,6 @@
 console.log('redirect.js');
 Promise.all([
-  chrome.storage.sync.get({ mode: 'dark', color: '', url: '' }),
+  chrome.storage.sync.get({ mode: 'default', color: '', url: '' }),
   new Promise(ok => {
     if (document.body) {
       ok();
@@ -29,8 +29,14 @@ Promise.all([
       document.body.style.backgroundColor = '#FFFFFF';
       break;
     }
-    default:
+    case 'dark': {
       document.body.style.backgroundColor = '#121212';
+      break;
+    }
+    default: {
+      // Don't set any background color for device default mode
+      break;
+    }
   }
 
   if (!items.url || items.url === '') {

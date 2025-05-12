@@ -1,10 +1,11 @@
 console.log('options.ts');
 
 //set the default value of the url and color inputs
-chrome.storage.sync.get({ url: '', mode: 'dark', color: '' }, items => {
+chrome.storage.sync.get({ url: '', mode: 'default', color: '' }, items => {
   console.log(items);
 
   const urlElement = document.getElementById('url');
+  const modeDefaultElement = document.getElementById('mode-default');
   const modeDarkElement = document.getElementById('mode-dark');
   const modeLightElement = document.getElementById('mode-light');
   const modeCustomElement = document.getElementById('mode-custom');
@@ -14,8 +15,11 @@ chrome.storage.sync.get({ url: '', mode: 'dark', color: '' }, items => {
   if (urlElement) {
     urlElement.value = items?.url || '';
   }
-  if (modeDarkElement && modeLightElement && modeCustomElement) {
-    if (items?.mode === 'dark') {
+  if (modeDefaultElement && modeDarkElement && modeLightElement && modeCustomElement) {
+    if (items?.mode === 'default') {
+      modeDefaultElement.checked = true;
+      colorPicker.style.display = 'none';
+    } else if (items?.mode === 'dark') {
       modeDarkElement.checked = true;
       colorPicker.style.display = 'none';
     } else if (items?.mode === 'light') {
