@@ -18,12 +18,5 @@
   "options_page": "/src/options/options.html",
   "chrome_url_overrides": {
     "newtab": "/src/redirect/redirect.html"
-  },
-  "content_scripts": [
-    {
-      "matches": ["<all_urls>"],
-      "js": ["/src/redirect/redirect.js"],
-      "run_at": "document_start"
-    }
-  ]
+  }
 }

@@ -32,35 +32,35 @@
             </div>
             <form class="url-form"> 
               <div class="label-input-container">
-                <label for="url">URL:</label>
-                <div>
+                <label for="url">URL</label>
+                <div class="url-input-container">
                   <input id="url" name="url" class="url-input" placeholder="https://example.com">
-                  <button type="button" id="reset-url" title="Clear URL">✕</button>
+                  <button type="button" class="reset-input-button" id="reset-url" title="Clear URL">✕</button>
                 </div>
               </div>
       
               <div class="label-input-container radio-group">
-                <label for="mode">Mode:</label>
-                <div class="radio-selection-container">
+                <label for="mode">Mode</label>
+                <div for="mode-dark" class="radio-selection-container">
                   <input id="mode-dark" name="mode" type="radio" value="dark">
-                  <label for="mode-dark">Dark</label>
+                  <label>Dark</label>
                 </div>
-                <div class="radio-selection-container">
+                <div for="mode-light" class="radio-selection-container">
                   <input id="mode-light" name="mode" type="radio" value="light">
-                  <label for="mode-light">Light</label>
+                  <label>Light</label>
                 </div>
-                <div class="radio-selection-container">
+                <div for="mode-custom" class="radio-selection-container">
                   <input id="mode-custom" name="mode" type="radio" value="custom">
-                  <label for="mode-custom">Custom</label>
+                  <label>Custom</label>
                 </div>
               </div>
       
-              <div id="color-picker" style="display: none;">
-                <label for="color">Color:</label>
+              <div id="color-picker" class="color-picker-container" style="display: none;">
+                <label for="color">Color</label>
                 <input id="color" name="color" type="color" value="#121212">
               </div>
       
-              <button type="button" id="save" title="Save">Save</button>
+              <button type="button" id="save" class="save-button">Update Settings</button>
               <div id="status" class="status"></div>
             </form>
             <p id="file-scheme-warning" style="display: block;">

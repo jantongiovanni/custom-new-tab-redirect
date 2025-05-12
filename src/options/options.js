@@ -23,7 +23,7 @@ chrome.storage.sync.get({ url: '', mode: 'dark', color: '' }, items => {
       colorPicker.style.display = 'none';
     } else if (items?.mode === 'custom') {
       modeCustomElement.checked = true;
-      colorPicker.style.display = 'block';
+      colorPicker.style.display = 'flex';
     }
   }
   if (colorElement) {
@@ -46,7 +46,7 @@ document.querySelectorAll('input[name="mode"]').forEach(element => {
     const colorPicker = document.getElementById('color-picker');
     switch (this.value) {
       case 'custom':
-      colorPicker.style.display = 'block';
+      colorPicker.style.display = 'flex';
       break;
     default:
       colorPicker.style.display = 'none';
@@ -85,7 +85,7 @@ document.getElementById('reset-url').addEventListener('click', function() {
 
 document.getElementById('open-extension-settings').addEventListener('click', function() {
   console.log('open-settings');
-  chrome.tabs.create({ url: 'chrome://extensions/?id=fnmljlendckijopajedcjebppcmolngf' });
+  chrome.tabs.create({ url: 'chrome://extensions/?id=' + chrome.runtime.id });
 });
 
 document.getElementById('open-appearance-settings').addEventListener('click', function() {

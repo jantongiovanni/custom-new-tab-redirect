@@ -1,3 +1,4 @@
+console.log('redirect.js');
 Promise.all([
   chrome.storage.sync.get({ mode: 'dark', color: '', url: '' }),
   new Promise(ok => {
@@ -9,6 +10,12 @@ Promise.all([
   }),
 ]).then(([items]) => {
   console.log(items);
+  ///log current url
+  console.log(window.location.href);
+  // if (window.location.href !== items.url && window.location.href !== 'chrome-extension://' + chrome.runtime.id + '/src/redirect/redirect.html') {
+  //   return;
+  // }
+
   switch (items.mode) {
     case 'custom': {
       if (items.color && items.color !== '') {
@@ -34,6 +41,7 @@ Promise.all([
 
   //if not a local file, redirect to the URL
   if (!items.url.startsWith('file://')) {
+    console.log('Redirecting to URL: ' + items.url);
     chrome.tabs.update({ url: items.url });
     return;
   }
@@ -48,4 +56,5 @@ Promise.all([
       chrome.runtime.openOptionsPage();
     }
   });
+  console.log('here');
 });
