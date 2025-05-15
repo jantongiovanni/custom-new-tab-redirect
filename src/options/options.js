@@ -1,6 +1,5 @@
 console.log('options.ts');
 
-//set the default value of the url and color inputs
 chrome.storage.sync.get({ url: '', mode: 'default', color: '' }, items => {
   console.log(items);
 
@@ -32,8 +31,29 @@ chrome.storage.sync.get({ url: '', mode: 'default', color: '' }, items => {
   }
   if (colorElement) {
     colorElement.value = items?.color || '#121212';
+    const colorTextElement = document.getElementById('color-text');
+    if (colorTextElement) {
+      colorTextElement.value = items?.color || '#121212';
+    }
   }
 });
+
+//color input sync
+const colorElement = document.getElementById('color');
+const colorTextElement = document.getElementById('color-text');
+
+if (colorElement && colorTextElement) {
+  colorElement.addEventListener('input', function() {
+    colorTextElement.value = this.value;
+  });
+
+  colorTextElement.addEventListener('input', function() {
+    // Only update if it's a valid hex color
+    if (/^#[0-9A-F]{6}$/i.test(this.value)) {
+      colorElement.value = this.value;
+    }
+  });
+}
 
 document.querySelectorAll('.label-input-container.radio-group > div').forEach(div => {
   div.addEventListener('click', function() {
@@ -58,15 +78,22 @@ document.querySelectorAll('input[name="mode"]').forEach(element => {
   });
 });
 
+//save button click
 document.getElementById("save").addEventListener("click", function() {
-  console.log('save');
-
   const color = document.getElementById('color')?.value;
   color && chrome.storage.sync.set({ color });
-  const url = document.getElementById('url')?.value || '';
+  let url = document.getElementById('url')?.value || '';
+  // Adds https:// to URLs that begin with www
+  if (url.startsWith('www.')) {
+    url = 'https://' + url;
+    const urlInput = document.getElementById('url');
+    if (urlInput) {
+      urlInput.value = url;
+    }
+  }
   chrome.storage.sync.set({ url });
   const mode = document.querySelector('input[name="mode"]:checked')?.value;
-  console.log(mode);
+
   mode && chrome.storage.sync.set({ mode });
   const status = document.getElementById('status');
   status.textContent = '✅ Settings saved.';
@@ -74,14 +101,11 @@ document.getElementById("save").addEventListener("click", function() {
     status.textContent = '';
   }, 2000);
 
-  //console log current storage settings
   chrome.storage.sync.get({ url: '', mode: 'dark', color: '' }, items => {
     console.log(items);
   });
 });
 
-
-//reset button to clear url input
 document.getElementById('reset-url').addEventListener('click', function() {
   console.log('reset');
   document.getElementById('url').value = '';
@@ -89,6 +113,10 @@ document.getElementById('reset-url').addEventListener('click', function() {
 
 document.getElementById('open-extension-settings').addEventListener('click', function() {
   console.log('open-settings');
+  chrome.tabs.create({ url: 'chrome://extensions/?id=' + chrome.runtime.id });
+});
+
+document.getElementById('open-extension-settings-link').addEventListener('click', function() {
   chrome.tabs.create({ url: 'chrome://extensions/?id=' + chrome.runtime.id });
 });
 

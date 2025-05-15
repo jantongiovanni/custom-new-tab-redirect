@@ -10,17 +10,34 @@
           content="light dark"
           name="color-scheme"
         >
+        <link rel="icon" href="/src/assets/redirect-plus.png">
         <title>Custom New Tab Redirect</title>
         <link rel="stylesheet" href="/src/assets/stylesheets/_reset.css">
         <link rel="stylesheet" href="options.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap" rel="stylesheet">
     </head>
     <body>
       <div class="border-wrapper dashed-border">
         <div class="container-wrapper dashed-border header-container">
           <h1>Custom New Tab Redirect</h1>
           <p class="header-description">
-            Set a custom URL for the new tab page and choose the way chrome shows the tab before the page fully loads.
+            Personalize your new tab by setting a custom URL and choosing how Chrome displays the tab before the page fully loads.
           </p>
+          <div class="button-container">
+                  
+            <button type="button" id="open-extension-settings" class="button smaller-button">
+              Extension Settings
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 32 32" style="margin-left: 0.25rem;"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M22 3h7v7m-1.5-5.5L20 12m-3-7H8a3 3 0 0 0-3 3v16a3 3 0 0 0 3 3h16a3 3 0 0 0 3-3v-9"/></svg>
+            </button>
+      
+      
+            <button type="button" id="open-appearance-settings" class="button smaller-button">
+              Chrome Appearance Settings
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 32 32" style="margin-left: 0.25rem;"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M22 3h7v7m-1.5-5.5L20 12m-3-7H8a3 3 0 0 0-3 3v16a3 3 0 0 0 3 3h16a3 3 0 0 0 3-3v-9"/></svg>
+            </button>
+          </div>
         </div>
       </div>
      
@@ -31,14 +48,22 @@
               <h2>Settings</h2>
             </div>
             <form class="url-form"> 
-              <div class="label-input-container">
-                <label for="url">URL</label>
-                <div class="url-input-container">
-                  <input id="url" name="url" class="url-input" placeholder="https://example.com">
-                  <button type="button" class="reset-input-button" id="reset-url" title="Clear URL">✕</button>
+              <div class="url-container">
+                <div class="label-input-container">
+                  <label for="url">URL</label>
+                  <div class="url-input-container">
+                    <input id="url" name="url" class="url-input" placeholder="https://example.com">
+                    <button type="button" class="reset-input-button" id="reset-url" title="Clear URL">✕</button>
+                  </div>
                 </div>
+                <p id="file-scheme-warning" style="display: block;">
+                  <strong>Important: </strong>
+                  If you are using a file URL, you need to enable the
+                  <code>Allow access to file URLs</code> option in the
+                  <a class="underline-link" id="open-extension-settings-link">extension settings</a>.
+                </p>            
               </div>
-      
+
               <div class="label-input-container radio-group">
                 <label for="mode">Mode</label>
                 <div for="mode-default" class="radio-selection-container">
@@ -61,32 +86,15 @@
       
               <div id="color-picker" class="color-picker-container" style="display: none;">
                 <label for="color">Color</label>
-                <input id="color" name="color" type="color" value="#121212">
+                <div class="color-inputs-container">
+                  <input id="color-text" name="color-text" type="text" class="color-text-input" placeholder="#121212">
+                  <input id="color" name="color" type="color" value="#121212">
+                </div>
               </div>
       
-              <button type="button" id="save" class="save-button">Update Settings</button>
+              <button type="button" id="save" class="button save-button">Update Settings</button>
               <div id="status" class="status"></div>
             </form>
-            <p id="file-scheme-warning" style="display: block;">
-              <strong>Important:</strong>
-              If you are using a file URL, you need to enable the
-              <code>Allow access to file URLs</code> option in the
-              extension settings.
-            </p>
-            
-            <img alt="Allow access to file URLs"
-              class="allow-access-img"
-              src="/src/assets/allowaccess.png"
-            >
-      
-            <button type="button" id="open-extension-settings">
-              Open Extension Settings
-            </button>
-      
-      
-            <button type="button" id="open-appearance-settings">
-              Open Appearance Settings
-            </button>
           </div>
         </div>
       </div>

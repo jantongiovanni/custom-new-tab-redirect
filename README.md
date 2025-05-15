@@ -1,3 +1,3 @@
-# Dark New Tab Redirect
+# Custom New Tab Redirect
 
-Dark New Tab Redirect is a browser extension that allows you to customize the URL of the new tab page with a dark theme.
+Personalize your new tab by setting a custom URL and choosing how Chrome displays the tab before the page fully loads.
