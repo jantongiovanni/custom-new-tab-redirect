@@ -1,8 +1,4 @@
-console.log('options.ts');
-
 chrome.storage.sync.get({ url: '', mode: 'default', color: '' }, items => {
-  console.log(items);
-
   const urlElement = document.getElementById('url');
   const modeDefaultElement = document.getElementById('mode-default');
   const modeDarkElement = document.getElementById('mode-dark');
@@ -100,19 +96,13 @@ document.getElementById("save").addEventListener("click", function() {
   setTimeout(() => {
     status.textContent = '';
   }, 2000);
-
-  chrome.storage.sync.get({ url: '', mode: 'dark', color: '' }, items => {
-    console.log(items);
-  });
 });
 
 document.getElementById('reset-url').addEventListener('click', function() {
-  console.log('reset');
   document.getElementById('url').value = '';
 });
 
 document.getElementById('open-extension-settings').addEventListener('click', function() {
-  console.log('open-settings');
   chrome.tabs.create({ url: 'chrome://extensions/?id=' + chrome.runtime.id });
 });
 

@@ -1,4 +1,3 @@
-console.log('redirect.js');
 Promise.all([
   chrome.storage.sync.get({ mode: 'default', color: '', url: '' }),
   new Promise(ok => {
@@ -33,14 +32,12 @@ Promise.all([
   }
 
   if (!items.url || items.url === '') {
-    console.log('No url set, redirecting to options page');
     chrome.runtime.openOptionsPage();
     return;
   }
 
   //if not a local file, redirect to the URL
   if (!items.url.startsWith('file://')) {
-    console.log('Redirecting to URL: ' + items.url);
     chrome.tabs.update({ url: items.url, active: true });
     return;
   }
@@ -48,10 +45,8 @@ Promise.all([
   //if local file, check for file scheme access
   chrome.extension.isAllowedFileSchemeAccess(isAllowedAccess => {
     if (isAllowedAccess) {
-      console.log('File scheme access is allowed.');
       chrome.tabs.update({ url: items.url, active: true });
     } else {
-      console.log('File scheme access is not allowed. Redirecting to options page.');
       chrome.runtime.openOptionsPage();
     }
   });
