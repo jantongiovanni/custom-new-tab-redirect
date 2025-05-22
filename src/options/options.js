@@ -1,4 +1,4 @@
-chrome.storage.sync.get({ url: '', mode: 'default', color: '' }, items => {
+chrome.storage.sync.get({ url: '', mode: 'default', color: '', syncEnabled: true }, items => {
   const urlElement = document.getElementById('url');
   const modeDefaultElement = document.getElementById('mode-default');
   const modeDarkElement = document.getElementById('mode-dark');
@@ -6,6 +6,17 @@ chrome.storage.sync.get({ url: '', mode: 'default', color: '' }, items => {
   const modeCustomElement = document.getElementById('mode-custom');
   const colorElement = document.getElementById('color');
   const colorPicker = document.getElementById('color-picker');
+  const syncCheckbox = document.getElementById('sync-enabled');
+
+  // Set initial sync checkbox state
+  if (syncCheckbox) {
+    syncCheckbox.setAttribute('aria-checked', items.syncEnabled ? 'true' : 'false');
+    if (items.syncEnabled) {
+      syncCheckbox.classList.add('checked');
+    } else {
+      syncCheckbox.classList.remove('checked');
+    }
+  }
 
   if (urlElement) {
     urlElement.value = items?.url || '';
@@ -51,6 +62,20 @@ if (colorElement && colorTextElement) {
   });
 }
 
+// Add sync checkbox click handler
+document.getElementById('sync-enabled-container').addEventListener('click', function() {
+  const syncCheckbox = this.querySelector('button[role="checkbox"]');
+  const isChecked = syncCheckbox.getAttribute('aria-checked') === 'true';
+  const newChecked = !isChecked;
+  
+  syncCheckbox.setAttribute('aria-checked', newChecked ? 'true' : 'false');
+  if (newChecked) {
+    syncCheckbox.classList.add('checked');
+  } else {
+    syncCheckbox.classList.remove('checked');
+  }
+});
+
 document.querySelectorAll('.label-input-container.radio-group > div').forEach(div => {
   div.addEventListener('click', function() {
     const radio = this.querySelector('input[type="radio"]');
@@ -91,6 +116,14 @@ document.getElementById("save").addEventListener("click", function() {
   const mode = document.querySelector('input[name="mode"]:checked')?.value;
 
   mode && chrome.storage.sync.set({ mode });
+
+  // Save sync enabled state
+  const syncCheckbox = document.getElementById('sync-enabled');
+  if (syncCheckbox) {
+    const syncEnabled = syncCheckbox.getAttribute('aria-checked') === 'true';
+    chrome.storage.sync.set({ syncEnabled });
+  }
+
   const status = document.getElementById('status');
   status.textContent = '✅ Settings saved.';
   setTimeout(() => {

@@ -82,16 +82,30 @@
                   <input id="mode-custom" name="mode" type="radio" value="custom">
                   <label>Custom</label>
                 </div>
-              </div>
-      
-              <div id="color-picker" class="color-picker-container" style="display: none;">
-                <label for="color">Color</label>
-                <div class="color-inputs-container">
-                  <input id="color-text" name="color-text" type="text" class="color-text-input" placeholder="#121212">
-                  <input id="color" name="color" type="color" value="#121212">
+
+                <div id="color-picker" class="color-picker-container" style="display: none;">
+                  <label for="color">Color</label>
+                  <div class="color-inputs-container">
+                    <input id="color-text" name="color-text" type="text" class="color-text-input" placeholder="#121212">
+                    <input id="color" name="color" type="color" value="#121212">
+                  </div>
                 </div>
               </div>
-      
+              <div class="checkbox-container">
+                <div class="radio-selection-container" id="sync-enabled-container">
+                  <button type="button" role="checkbox" id="sync-enabled" name="sync-enabled" class="checkbox">
+                    <span class="checkbox-icon">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg>
+                    </span>
+                  </button>
+                </div>
+                <div class="label-container">
+                  <label for="sync-enabled">Chrome Storage Sync</label>
+                  <p class="helper-text">
+                    When enabled, your settings will sync across devices signed into your Chrome account.
+                  </p>
+                </div>
+              </div>
               <button type="button" id="save" class="button save-button">Update Settings</button>
               <div id="status" class="status"></div>
             </form>

@@ -1,7 +1,7 @@
 {
   "name": "Custom New Tab Redirect",
   "description": "Personalize your new tab by setting a custom URL and choosing how Chrome displays the tab before the page fully loads.",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "manifest_version": 3,
   "action": {
     "default_popup": "/src/options/options.html",
